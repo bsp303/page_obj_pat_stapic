@@ -1,2 +1,2 @@
-# page_obj_pat_stapic
+# page_obj_pat_stapik
 Модуль "Применение паттерна Page Object Model"
