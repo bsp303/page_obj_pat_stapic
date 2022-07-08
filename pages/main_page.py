@@ -3,9 +3,6 @@ from .base_page import BasePage
 # Импорт класса с локаторами
 from .locators import MainPageLocators
 
-# Возврат нужного Page Object - Импорт класса LoginPage
-from .login_page import LoginPage
-
 # MainPage наследник BasePage (MainPage имеет полный доступ к всем атрибутам и методам класса-предка)
 class MainPage(BasePage):
     def go_to_login_page(self):
