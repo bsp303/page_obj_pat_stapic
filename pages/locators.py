@@ -6,4 +6,13 @@ class MainPageLocators():
 class LoginPegeLocators():
     LOGIN_URL = (By.CSS_SELECTOR, "#login_link")
     BUTTON_LOGIN = (By.CSS_SELECTOR, "button[name='login_submit']")
-    BUTTON_REGISTER =(By.CSS_SELECTOR, "button[name='registration_submit']")
+    BUTTON_REGISTER = (By.CSS_SELECTOR, "button[name='registration_submit']")
+
+class ProductPageLocators():
+    BUTTON_ADD_TO_CART_1 = (By.CSS_SELECTOR, "button[class='btn btn-lg btn-primary btn-add-to-basket']")
+    BUTTON_ADD_TO_CART_2 = (By.CSS_SELECTOR, "#add_to_basket_form")
+    BUTTON_ADD_TO_CART_3 = (By.XPATH, "//form[@id='add_to_basket_form']")
+    TITLE_BOOK_MARKET = (By.XPATH, "//div/h1")
+    TITLE_BOOK_ALLERT = (By.XPATH, "//div[@class='alert alert-safe alert-noicon alert-success  fade in'][1]//strong")
+    PRICE_BOOK_MARKET = (By.XPATH, "//p[@class='price_color']")
+    PRICE_BOOK_CART = (By.XPATH, "//div[@class='alert alert-safe alert-noicon alert-info  fade in']//strong")
