@@ -4,12 +4,17 @@ import math
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from pages.locators import BasePageLocators
+from .locators import BasePageLocators
 
 class BasePage():
     def go_to_login_page(self):
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         link.click()
+        print("успешно выполнен переход на страницу авторизации/регистрации")
+
+    def go_to_basket_page(self):
+        link_b = self.browser.find_element(*BasePageLocators.BASKET_LINK)
+        link_b.click()
         print("успешно выполнен переход на страницу авторизации/регистрации")
 
     def __init__(self, browser, url, timeout=10):
