@@ -7,6 +7,10 @@ class LoginPegeLocators():
     LOGIN_URL = (By.CSS_SELECTOR, "#login_link")
     BUTTON_LOGIN = (By.CSS_SELECTOR, "button[name='login_submit']")
     BUTTON_REGISTER = (By.CSS_SELECTOR, "button[name='registration_submit']")
+    EMAIL_IMPUT = (By.ID, "id_registration-email")
+    PASS_REG_IMPUT1 = (By.ID, "id_registration-password1")
+    PASS_REG_IMPUT2 = (By.ID, "id_registration-password2")
+    REG_SUBMIT = (By.NAME, "registration_submit")
 
 class ProductPageLocators():
     BUTTON_ADD_TO_CART_1 = (By.CSS_SELECTOR, "button[class='btn btn-lg btn-primary btn-add-to-basket']")
@@ -24,3 +28,4 @@ class BasePageLocators():
     TITLE_BASKET_PAGE = (By.CSS_SELECTOR, ".page-header")
     MASSAGE_EMPTY_BASKET = (By.CSS_SELECTOR, "#content_inner>p>a")
     BLOCK_THE_PRODUCTS =(By.CSS_SELECTOR, ".basket-title>div.row")
+    USER_ICON=(By.CSS_SELECTOR, ".icon-user")

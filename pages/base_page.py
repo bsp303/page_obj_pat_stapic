@@ -59,6 +59,9 @@ class BasePage():
         except NoAlertPresentException:
             print("No second alert presented")
 
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "Авторизация не выполнена т.к. отсутствует иконка"
+
     def open(self):
         self.browser.get(self.url)
 
