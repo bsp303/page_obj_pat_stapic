@@ -3,6 +3,7 @@ from .base_page import BasePage
 
 
 class BasketPage(BasePage):
+    # метод запускающий все проверки последовательно
     def check_basket(self):
         self.check_open_basket_page()
         self.check_the_absent_of_block_with_products()

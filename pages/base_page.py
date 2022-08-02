@@ -1,4 +1,3 @@
-# импорт нужных исключений
 from selenium.common.exceptions import NoAlertPresentException, NoSuchElementException
 import math
 from selenium.common.exceptions import TimeoutException
@@ -7,11 +6,13 @@ from selenium.webdriver.support.wait import WebDriverWait
 from .locators import BasePageLocators
 
 class BasePage():
+    # переход на страницу авторизации
     def go_to_login_page(self):
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         link.click()
         print("успешно выполнен переход на страницу авторизации/регистрации")
 
+    # переход на страницу корзины
     def go_to_basket_page(self):
         link_b = self.browser.find_element(*BasePageLocators.BASKET_LINK)
         link_b.click()
@@ -20,9 +21,8 @@ class BasePage():
     def __init__(self, browser, url, timeout=10):
         self.browser = browser
         self.url = url
-        #добавляем неявное ожидание
-        #self.browser.implicitly_wait(timeout)
 
+    # проверка исчезновения элемента (передаем нужный и проверяем в течении 4 секунд)
     def is_disappeared(self, how, what, timeout=4):
         try:
             WebDriverWait(self.browser, timeout, 1, TimeoutException). \
@@ -31,6 +31,7 @@ class BasePage():
             return False
         return True
 
+    # проверка наличие элемента (передаем нужный и проверяем в течении 4 секунд)
     def is_element_present(self, how, what):
         try:
             self.browser.find_element(how, what)
@@ -38,6 +39,7 @@ class BasePage():
             return False
         return True
 
+    # проверка отсутствие элемента (передаем нужный и проверяем в течении 4 секунд)
     def is_not_element_present(self, how, what, timeout=4):
         try:
             WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
@@ -45,6 +47,7 @@ class BasePage():
             return True
         return False
 
+    # обработка капчи для расчета математической функции
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
         x = alert.text.split(" ")[2]
@@ -59,12 +62,15 @@ class BasePage():
         except NoAlertPresentException:
             print("No second alert presented")
 
+    # проверка что клиент авторизован
     def should_be_authorized_user(self):
         assert self.is_element_present(*BasePageLocators.USER_ICON), "Авторизация не выполнена т.к. отсутствует иконка"
 
+    # метод открытия переданной страницы
     def open(self):
         self.browser.get(self.url)
 
+    # проверка отобрыдения ссылки на страницу авторизации
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
         print("ссылка на авторизацию успешно отображена")

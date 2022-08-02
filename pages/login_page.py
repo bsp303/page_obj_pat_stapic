@@ -1,9 +1,8 @@
-import time
-
 from .base_page import BasePage
 from .locators import LoginPegeLocators
 
 class LoginPage(BasePage):
+    # метод запускающий все проверки последовательно
     def should_be_login_page(self):
         self.go_to_login_page()
         self.should_be_login_url()
@@ -35,6 +34,7 @@ class LoginPage(BasePage):
         assert self.is_element_present(*LoginPegeLocators.BUTTON_REGISTER), "ссылка на кнопку зарегистрироваться отсутствует"
         print("кнопка для регистрации отображена")
 
+    # метод запускающий регистрацию нового клиента
     def registr_new_user(self, email, password):
         self.browser.find_element(*LoginPegeLocators.EMAIL_IMPUT).send_keys(email)
         self.browser.find_element(*LoginPegeLocators.PASS_REG_IMPUT1).send_keys(password)
